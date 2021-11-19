@@ -23,10 +23,10 @@ public class Position {
 
 		Position build() {
 			if (this.currentX < 0 || this.currentX > maxX) {
-				throw new IllegalArgumentException("X está fuera de rango[0 to " + maxX + "]: " + currentX);
+				throw new IllegalArgumentException("X out of range [0 to " + maxX + "]: " + currentX);
 			}
 			if (this.currentY < 0 || this.currentY > maxY) {
-				throw new IllegalArgumentException("X está fuera de rango[0 to " + maxY + "]: " + currentY);
+				throw new IllegalArgumentException("X out of range [0 to " + maxY + "]: " + currentY);
 			}
 			return new Position(currentX, currentY, maxX, maxY);
 		}
