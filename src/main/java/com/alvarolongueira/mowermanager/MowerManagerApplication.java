@@ -6,12 +6,7 @@ import com.alvarolongueira.mowermanager.service.ManagerService;
 public class MowerManagerApplication {
 
 	public static void main(String[] args) {
-		CommFactory commFactory = new CommFactory();
-		run(commFactory);
-	}
-
-	public static void run(CommFactory commFactory) {
-		ManagerService service = new ManagerService(commFactory);
+		ManagerService service = new ManagerService(new CommFactory());
 		service.run();
 	}
 

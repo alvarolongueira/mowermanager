@@ -11,21 +11,22 @@ import com.alvarolongueira.mowermanager.comm.output.OutputService;
 import com.alvarolongueira.mowermanager.domain.Cardinal;
 import com.alvarolongueira.mowermanager.domain.Mower;
 import com.alvarolongueira.mowermanager.domain.PositionWithLimits;
+import com.alvarolongueira.mowermanager.service.ManagerService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MowerManagerApplicationTest {
-
-	CommFactory commFactory = Mockito.spy(new CommFactory());
 
 	@Mock
 	OutputService ouputService;
 
 	@Test
 	public void completeTest() {
+		CommFactory commFactory = Mockito.spy(new CommFactory());
 
 		Mockito.when(commFactory.getOutputService()).thenReturn(ouputService);
 
-		MowerManagerApplication.run(commFactory);
+		ManagerService service = new ManagerService(commFactory);
+		service.run();
 
 		PositionWithLimits position1 = PositionWithLimits.of(1, 3, 5, 5);
 		Cardinal cardinal1 = Cardinal.N;
