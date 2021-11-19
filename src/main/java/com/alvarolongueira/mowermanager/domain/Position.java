@@ -1,5 +1,7 @@
 package com.alvarolongueira.mowermanager.domain;
 
+import com.alvarolongueira.mowermanager.control.Movement;
+
 import lombok.Builder;
 import lombok.Data;
 

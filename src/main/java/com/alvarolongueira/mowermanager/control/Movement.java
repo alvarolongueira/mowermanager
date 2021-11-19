@@ -1,4 +1,4 @@
-package com.alvarolongueira.mowermanager.domain;
+package com.alvarolongueira.mowermanager.control;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

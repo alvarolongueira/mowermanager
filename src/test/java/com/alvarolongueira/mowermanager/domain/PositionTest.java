@@ -3,6 +3,8 @@ package com.alvarolongueira.mowermanager.domain;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.alvarolongueira.mowermanager.control.Movement;
+
 public class PositionTest {
 
 	@Test

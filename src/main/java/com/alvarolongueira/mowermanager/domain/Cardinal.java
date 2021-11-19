@@ -1,5 +1,7 @@
 package com.alvarolongueira.mowermanager.domain;
 
+import com.alvarolongueira.mowermanager.control.Movement;
+
 public enum Cardinal {
 	N("N", 0, 1), 
 	S("S", 0, -1), 

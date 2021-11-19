@@ -3,6 +3,8 @@ package com.alvarolongueira.mowermanager.domain;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.alvarolongueira.mowermanager.control.Action;
+
 public class MowerTest {
 
 	private Position position = Position.of(5, 5, 10, 10);
