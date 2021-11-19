@@ -7,10 +7,10 @@ import lombok.Data;
 @Builder(builderClassName = "Builder")
 public class Position {
 
-	private final int currentX;
-	private final int currentY;
-	private final int maxX;
-	private final int maxY;
+	private int currentX;
+	private int currentY;
+	private int maxX;
+	private int maxY;
 
 	private Position(int currentX, int currentY, int maxX, int maxY) {
 		this.currentX = currentX;
@@ -37,6 +37,7 @@ public class Position {
 	}
 
 	public void apply(Movement movement) {
-
+		this.currentX += movement.getX();
+		this.currentY += movement.getY();
 	}
 }
