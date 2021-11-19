@@ -1,15 +1,23 @@
 package com.alvarolongueira.mowermanager.domain;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.alvarolongueira.mowermanager.control.Action;
 
 public class MowerTest {
 
-	private Position position = Position.of(5, 5, 10, 10);
-	private Cardinal cardinal = Cardinal.N;
-	private Mower mower = new Mower(position, cardinal);
+	private Position position;
+	private Cardinal cardinal;
+	private Mower mower;
+
+	@Before
+	public void inicializar() {
+		this.position = Position.of(5, 5, 10, 10);
+		this.cardinal = Cardinal.N;
+		this.mower = new Mower(this.position, this.cardinal);
+	}
 
 	@Test
 	public void createMower() {
@@ -154,12 +162,12 @@ public class MowerTest {
 		mower.move(Action.FORWARD);
 		Assert.assertEquals(6, mower.getPosition().getCurrentX());
 		Assert.assertEquals(2, mower.getPosition().getCurrentY());
-		Assert.assertEquals(Cardinal.N, mower.getCardinal());
+		Assert.assertEquals(Cardinal.S, mower.getCardinal());
 
 		mower.move(Action.FORWARD);
 		Assert.assertEquals(6, mower.getPosition().getCurrentX());
 		Assert.assertEquals(1, mower.getPosition().getCurrentY());
-		Assert.assertEquals(Cardinal.N, mower.getCardinal());
+		Assert.assertEquals(Cardinal.S, mower.getCardinal());
 
 		mower.move(Action.TURN_LEFT);
 		Assert.assertEquals(6, mower.getPosition().getCurrentX());
