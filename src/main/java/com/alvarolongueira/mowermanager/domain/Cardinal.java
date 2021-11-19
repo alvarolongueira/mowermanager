@@ -7,16 +7,16 @@ public enum Cardinal {
 	W("W", -1, 0);
 	;
 
-	private final String name;
+	private final String code;
 	private final Movement movement;
 
-	private Cardinal(String name, int x, int y) {
-		this.name = name;
+	private Cardinal(String code, int x, int y) {
+		this.code = code;
 		this.movement = new Movement(x, y);
 	}
 
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
 	public Movement getMovement() {
