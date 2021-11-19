@@ -35,22 +35,21 @@ public class PositionTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void createInvalidPositionOverXLimit() {
 		Position position = Position.of(11, 5, 10, 10);
-		System.err.println(position);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void createInvalidPositionOverYLimit() {
-		Position position = Position.of(5, 11, 10, 10);
+		Position.of(5, 11, 10, 10);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void createInvalidPositionUnderZeroX() {
-		Position position = Position.of(-1, 5, 10, 10);
+		Position.of(-1, 5, 10, 10);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void createInvalidPositioUnderZeroY() {
-		Position position = Position.of(5, -1, 10, 10);
+		Position.of(5, -1, 10, 10);
 	}
 
 	@Test
