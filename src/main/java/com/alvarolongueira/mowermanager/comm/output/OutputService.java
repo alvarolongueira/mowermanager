@@ -1,4 +1,4 @@
-package com.alvarolongueira.mowermanager.ouput;
+package com.alvarolongueira.mowermanager.comm.output;
 
 import com.alvarolongueira.mowermanager.domain.Mower;
 

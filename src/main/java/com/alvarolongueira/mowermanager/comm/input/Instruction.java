@@ -1,4 +1,4 @@
-package com.alvarolongueira.mowermanager.input;
+package com.alvarolongueira.mowermanager.comm.input;
 
 import java.util.List;
 
