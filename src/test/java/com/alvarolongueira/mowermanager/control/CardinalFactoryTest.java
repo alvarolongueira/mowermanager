@@ -16,49 +16,95 @@ public class CardinalFactoryTest {
 
 	@Test
 	public void northToEastRight() throws UnexpectedException {
-
 		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
-
-		Assert.assertEquals(newCardinal, cardinalEast);
+		Assert.assertEquals(cardinalEast, newCardinal);
 	}
 
 	@Test
 	public void northToEastLeft() throws UnexpectedException {
 
-		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
+		Cardinal newCardinal = CardinalFactory.left(cardinalNorth);
+		Assert.assertEquals(cardinalWest, newCardinal);
 
-		Assert.assertEquals(newCardinal, cardinalEast);
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalSouth, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalEast, newCardinal);
 	}
 
 	@Test
 	public void southToWestRight() throws UnexpectedException {
-
-		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
-
-		Assert.assertEquals(newCardinal, cardinalWest);
+		Cardinal newCardinal = CardinalFactory.right(cardinalSouth);
+		Assert.assertEquals(cardinalWest, newCardinal);
 	}
 
 	@Test
-	public void southToWesttLeft() throws UnexpectedException {
+	public void southToWestLeft() throws UnexpectedException {
 
-		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
+		Cardinal newCardinal = CardinalFactory.left(cardinalSouth);
+		Assert.assertEquals(cardinalEast, newCardinal);
 
-		Assert.assertEquals(newCardinal, cardinalWest);
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalNorth, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalWest, newCardinal);
 	}
 
 	@Test
 	public void northToSouthSeveralTurns() throws UnexpectedException {
 
 		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
+		Assert.assertEquals(cardinalEast, newCardinal);
 
-		Assert.assertEquals(newCardinal, cardinalSouth);
+		newCardinal = CardinalFactory.right(newCardinal);
+		Assert.assertEquals(cardinalSouth, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalEast, newCardinal);
+
+		newCardinal = CardinalFactory.right(newCardinal);
+		Assert.assertEquals(cardinalSouth, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalEast, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalNorth, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalWest, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalSouth, newCardinal);
 	}
 
 	@Test
 	public void westToEastSeveralTurns() throws UnexpectedException {
 
-		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
+		Cardinal newCardinal = CardinalFactory.right(cardinalWest);
+		Assert.assertEquals(cardinalNorth, newCardinal);
 
-		Assert.assertEquals(newCardinal, cardinalWest);
+		newCardinal = CardinalFactory.right(newCardinal);
+		Assert.assertEquals(cardinalEast, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalNorth, newCardinal);
+
+		newCardinal = CardinalFactory.right(newCardinal);
+		Assert.assertEquals(cardinalEast, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalNorth, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalWest, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalSouth, newCardinal);
+
+		newCardinal = CardinalFactory.left(newCardinal);
+		Assert.assertEquals(cardinalEast, newCardinal);
 	}
 }
