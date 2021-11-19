@@ -1,9 +1,13 @@
 package com.alvarolongueira.mowermanager.comm.input;
 
+import java.util.Optional;
+
+import com.alvarolongueira.mowermanager.domain.Position;
+
 public interface InputService {
 
-	public Instruction readFirstInstruction();
+	public Optional<Position> readFirstInstruction();
 
-	public Instruction readNextInstruction();
+	public Optional<Instruction> readNextInstruction();
 
 }

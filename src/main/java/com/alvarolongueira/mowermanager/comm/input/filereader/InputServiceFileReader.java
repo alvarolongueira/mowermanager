@@ -6,14 +6,17 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Queue;
 
 import org.apache.log4j.Logger;
 
 import com.alvarolongueira.mowermanager.comm.input.InputService;
 import com.alvarolongueira.mowermanager.comm.input.Instruction;
+import com.alvarolongueira.mowermanager.domain.Position;
 
 public class InputServiceFileReader implements InputService {
 
@@ -27,15 +30,25 @@ public class InputServiceFileReader implements InputService {
 	}
 
 	@Override
-	public Instruction readFirstInstruction() {
+	public Optional<Position> readFirstInstruction() {
 
-		return null;
+		Optional<String> nextLine = Optional.ofNullable(queue.poll());
+		if (nextLine.isPresent() && !nextLine.get().isEmpty()) {
+			return Optional.empty();
+		}
+		List<String> line = Arrays.asList(nextLine.get().split(" "));
+
+		int x = Integer.valueOf(line.get(0));
+		int y = Integer.valueOf(line.get(1));
+		Position maxDimensions = Position.of(x, y, x, y);
+
+		return Optional.of(maxDimensions);
 	}
 
 	@Override
-	public Instruction readNextInstruction() {
+	public Optional<Instruction> readNextInstruction() {
 
-		return null;
+		return Optional.empty();
 	}
 
 	private void readFile() {

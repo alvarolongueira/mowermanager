@@ -11,46 +11,43 @@ public class Position {
 
 	private int currentX;
 	private int currentY;
-	private int max_X;
-	private int max_Y;
+	private int maxX;
+	private int maxY;
 
-	private Position(int currentX, int currentY, int max_X, int max_Y) {
+	private Position(int currentX, int currentY, int maxX, int maxY) {
 		this.currentX = currentX;
 		this.currentY = currentY;
-		this.max_X = max_X;
-		this.max_Y = max_Y;
+		this.maxX = maxX;
+		this.maxY = maxY;
 	}
 
-	private Position(int currentX, int currentY) {
-		this.currentX = currentX;
-		this.currentY = currentY;
-		this.max_X = currentX;
-		this.max_Y = currentY;
-	}
-	
 	static class Builder {
 
 		Position build() {
-			if (this.currentX < 0 || this.currentX > max_X) {
-				throw new IllegalArgumentException("X out of range [0 to " + max_X + "]: " + currentX);
+			if (this.currentX < 0 || this.currentX > maxX) {
+				throw new IllegalArgumentException("X out of range [0 to " + maxX + "]: " + currentX);
 			}
-			if (this.currentY < 0 || this.currentY > max_Y) {
-				throw new IllegalArgumentException("X out of range [0 to " + max_Y + "]: " + currentY);
+			if (this.currentY < 0 || this.currentY > maxY) {
+				throw new IllegalArgumentException("X out of range [0 to " + maxY + "]: " + currentY);
 			}
-			return new Position(currentX, currentY, max_X, max_Y);
+			return new Position(currentX, currentY, maxX, maxY);
 		}
 	}
 
-	public static Position of(int currentX, int currentY, int max_X, int max_Y) {
-		return Position.builder().currentX(currentX).currentY(currentY).max_X(max_X).max_Y(max_Y).build();
+	public static Position of(int currentX, int currentY, int maxX, int maxY) {
+		return Position.builder().currentX(currentX).currentY(currentY).maxX(maxX).maxY(maxY).build();
+	}
+
+	public static Position of(int x, int y) {
+		return Position.builder().currentX(x).currentY(y).maxX(x).maxY(y).build();
 	}
 
 	public void apply(Movement movement) {
 		this.currentX += movement.getX();
 		this.currentY += movement.getY();
 
-		this.currentX = this.keepMinMax(this.currentX, this.max_X);
-		this.currentY = this.keepMinMax(this.currentY, this.max_Y);
+		this.currentX = this.keepMinMax(this.currentX, this.maxX);
+		this.currentY = this.keepMinMax(this.currentY, this.maxY);
 	}
 
 	private int keepMinMax(int current, int max) {

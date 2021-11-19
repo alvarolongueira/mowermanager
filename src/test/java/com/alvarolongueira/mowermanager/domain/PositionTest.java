@@ -12,8 +12,8 @@ public class PositionTest {
 		Position position = Position.of(5, 3, 10, 10);
 		Assert.assertEquals(5, position.getCurrentX());
 		Assert.assertEquals(3, position.getCurrentY());
-		Assert.assertEquals(10, position.getMax_X());
-		Assert.assertEquals(10, position.getMax_Y());
+		Assert.assertEquals(10, position.getMaxX());
+		Assert.assertEquals(10, position.getMaxY());
 	}
 
 	@Test
@@ -21,8 +21,8 @@ public class PositionTest {
 		Position position = Position.of(0, 0, 10, 10);
 		Assert.assertEquals(0, position.getCurrentX());
 		Assert.assertEquals(0, position.getCurrentY());
-		Assert.assertEquals(10, position.getMax_X());
-		Assert.assertEquals(10, position.getMax_Y());
+		Assert.assertEquals(10, position.getMaxX());
+		Assert.assertEquals(10, position.getMaxY());
 	}
 
 	@Test
@@ -30,8 +30,8 @@ public class PositionTest {
 		Position position = Position.of(10, 10, 10, 10);
 		Assert.assertEquals(10, position.getCurrentX());
 		Assert.assertEquals(10, position.getCurrentY());
-		Assert.assertEquals(10, position.getMax_X());
-		Assert.assertEquals(10, position.getMax_Y());
+		Assert.assertEquals(10, position.getMaxX());
+		Assert.assertEquals(10, position.getMaxY());
 	}
 
 	@Test(expected = IllegalArgumentException.class)

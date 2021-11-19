@@ -27,8 +27,8 @@ public class MowerTest {
 
 		Assert.assertEquals(5, mower.getPosition().getCurrentX());
 		Assert.assertEquals(8, mower.getPosition().getCurrentY());
-		Assert.assertEquals(9, mower.getPosition().getMax_X());
-		Assert.assertEquals(10, mower.getPosition().getMax_Y());
+		Assert.assertEquals(9, mower.getPosition().getMaxX());
+		Assert.assertEquals(10, mower.getPosition().getMaxY());
 		Assert.assertEquals(Cardinal.S, mower.getCardinal());
 	}
 

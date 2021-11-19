@@ -1,6 +1,7 @@
 package com.alvarolongueira.mowermanager.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.alvarolongueira.mowermanager.comm.CommFactory;
 import com.alvarolongueira.mowermanager.comm.input.InputService;
@@ -13,8 +14,8 @@ import com.alvarolongueira.mowermanager.domain.Position;
 
 public class ManagerService {
 
-	private int max_X;
-	private int max_Y;
+	private int maxX;
+	private int maxY;
 
 	private final InputService inputService;
 	private final OutputService outputService;
@@ -25,24 +26,29 @@ public class ManagerService {
 	}
 
 	public void run() {
-		
-		Instruction firstInstruction = inputService.readFirstInstruction();
-		this.saveMaxParameters(firstInstruction);
 
-		Instruction instruction;
-		do {
-			instruction = inputService.readNextInstruction();
+		Optional<Position> maxDimensions = inputService.readFirstInstruction();
+		if (!maxDimensions.isPresent()) {
+			return;
+		}
+
+		this.saveMaxParameters(maxDimensions.get());
+
+		Optional<Instruction> optionalInstruction = inputService.readNextInstruction();
+		while (optionalInstruction.isPresent()) {
+
+			Instruction instruction = optionalInstruction.get();
 			Mower mower = this.mowerAction(instruction.getPosition(), instruction.getCardinal(), instruction.getActions());
 			outputService.write(mower);
 
-		} while (instruction != null);
-		
+			optionalInstruction = inputService.readNextInstruction();
+		}
+
 	}
 
-	public void saveMaxParameters(Instruction instruction) {
-		Position position = instruction.getPosition();
-		this.max_X = position.getCurrentX();
-		this.max_X = position.getCurrentY();
+	public void saveMaxParameters(Position maxDimensions) {
+		this.maxX = maxDimensions.getCurrentX();
+		this.maxX = maxDimensions.getCurrentY();
 	}
 
 	private Mower mowerAction(Position position, Cardinal cardinal, List<Action> actions) {
@@ -50,12 +56,12 @@ public class ManagerService {
 		return null;
 	}
 
-	public int getMax_X() {
-		return max_X;
+	public int getMaxX() {
+		return maxX;
 	}
 
-	public int getMax_Y() {
-		return max_Y;
+	public int getMaxY() {
+		return maxY;
 	}
 
 }
