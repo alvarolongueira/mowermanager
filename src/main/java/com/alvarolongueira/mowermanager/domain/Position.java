@@ -39,5 +39,18 @@ public class Position {
 	public void apply(Movement movement) {
 		this.currentX += movement.getX();
 		this.currentY += movement.getY();
+
+		this.currentX = this.keepMinMax(this.currentX, this.maxX);
+		this.currentY = this.keepMinMax(this.currentY, this.maxY);
+	}
+
+	private int keepMinMax(int current, int max) {
+		if (current < 0) {
+			return 0;
+		}
+		if (current > max) {
+			return max;
+		}
+		return current;
 	}
 }

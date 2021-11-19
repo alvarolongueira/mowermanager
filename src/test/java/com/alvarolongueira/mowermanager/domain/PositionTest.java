@@ -83,7 +83,7 @@ public class PositionTest {
 	@Test
 	public void movePositionOneWest() {
 		Position position = Position.of(5, 3, 10, 10);
-		Movement movement = Cardinal.E.getMovement();
+		Movement movement = Cardinal.W.getMovement();
 		position.apply(movement);
 		Assert.assertEquals(4, position.getCurrentX());
 		Assert.assertEquals(3, position.getCurrentY());
