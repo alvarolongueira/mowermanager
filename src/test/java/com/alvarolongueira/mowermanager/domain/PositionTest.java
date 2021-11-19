@@ -7,33 +7,43 @@ public class PositionTest {
 
 	@Test
 	public void createPosition() {
-		Position position = new Position(4, 3, 8, 8);
-		Assert.assertEquals(4,position.getCurrentX());
-		Assert.assertEquals(3,position.getCurrentY());
-		Assert.assertEquals(8,position.getMaxX());
-		Assert.assertEquals(8,position.getMaxY());
+		Position position = new Position(4, 3, 10, 10);
+		Assert.assertEquals(4, position.getCurrentX());
+		Assert.assertEquals(3, position.getCurrentY());
+		Assert.assertEquals(8, position.getMaxX());
+		Assert.assertEquals(8, position.getMaxY());
 	}
 
 	@Test
+	public void createPositionInZeroPosition() {
+		Position position = new Position(0, 0, 10, 10);
+	}
+
+	@Test
+	public void createPositionInLimits() {
+		Position position = new Position(10, 10, 10, 10);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
 	public void createInvalidPositionOverXLimit() {
-		Position position = new Position(10, 6, 8, 8);
+		Position position = new Position(11, 5, 10, 10);
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void createInvalidPositionOverYLimit() {
-		Position position = new Position(2, 11, 8, 8);
+		Position position = new Position(5, 11, 10, 10);
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void createInvalidPositionUnderZeroX() {
-		Position position = new Position(10, 6, 8, 8);
+		Position position = new Position(-1, 5, 10, 10);
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void createInvalidPositioUnderZeroY() {
-		Position position = new Position(2, 11, 8, 8);
+		Position position = new Position(5, -1, 10, 10);
 	}
-	
+
 	@Test
 	public void movePositionOneNorth() {
 
@@ -58,10 +68,10 @@ public class PositionTest {
 	public void moveSeveralWays() {
 
 	}
-	
+
 	@Test
 	public void moveOverLimitsStayInside() {
 
 	}
-	
+
 }
