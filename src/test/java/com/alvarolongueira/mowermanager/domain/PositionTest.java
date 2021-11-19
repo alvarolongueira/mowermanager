@@ -34,7 +34,7 @@ public class PositionTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void createInvalidPositionOverXLimit() {
-		Position position = Position.of(11, 5, 10, 10);
+		Position.of(11, 5, 10, 10);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

@@ -1,5 +1,7 @@
 package com.alvarolongueira.mowermanager.control;
 
+import java.rmi.UnexpectedException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,49 +15,49 @@ public class CardinalFactoryTest {
 	private final Cardinal cardinalEast = Cardinal.E;
 
 	@Test
-	public void northToEastRight() {
+	public void northToEastRight() throws UnexpectedException {
 
-		Cardinal newCardinal = CardinalFactory.of(cardinalNorth).turnRight();
-
-		Assert.assertEquals(newCardinal, cardinalEast);
-	}
-
-	@Test
-	public void northToEastLeft() {
-
-		Cardinal newCardinal = CardinalFactory.of(cardinalNorth).turnRight();
+		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
 
 		Assert.assertEquals(newCardinal, cardinalEast);
 	}
 
 	@Test
-	public void southToWestRight() {
+	public void northToEastLeft() throws UnexpectedException {
 
-		Cardinal newCardinal = CardinalFactory.of(cardinalNorth).turnRight();
+		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
+
+		Assert.assertEquals(newCardinal, cardinalEast);
+	}
+
+	@Test
+	public void southToWestRight() throws UnexpectedException {
+
+		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
 
 		Assert.assertEquals(newCardinal, cardinalWest);
 	}
 
 	@Test
-	public void southToWesttLeft() {
+	public void southToWesttLeft() throws UnexpectedException {
 
-		Cardinal newCardinal = CardinalFactory.of(cardinalNorth).turnRight();
+		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
 
 		Assert.assertEquals(newCardinal, cardinalWest);
 	}
 
 	@Test
-	public void northToSouthSeveralTurns() {
+	public void northToSouthSeveralTurns() throws UnexpectedException {
 
-		Cardinal newCardinal = CardinalFactory.of(cardinalNorth).turnRight();
+		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
 
 		Assert.assertEquals(newCardinal, cardinalSouth);
 	}
 
 	@Test
-	public void westToEastSeveralTurns() {
+	public void westToEastSeveralTurns() throws UnexpectedException {
 
-		Cardinal newCardinal = CardinalFactory.of(cardinalNorth).turnRight();
+		Cardinal newCardinal = CardinalFactory.right(cardinalNorth);
 
 		Assert.assertEquals(newCardinal, cardinalWest);
 	}
