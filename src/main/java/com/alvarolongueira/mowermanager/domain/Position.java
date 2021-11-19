@@ -1,62 +1,14 @@
 package com.alvarolongueira.mowermanager.domain;
 
-import com.alvarolongueira.mowermanager.control.Movement;
-
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@Builder(builderClassName = "Builder")
+@AllArgsConstructor
 public class Position {
 
-	private int currentX;
-	private int currentY;
-	private int maxX;
-	private int maxY;
+	private int x;
 
-	private Position(int currentX, int currentY, int maxX, int maxY) {
-		this.currentX = currentX;
-		this.currentY = currentY;
-		this.maxX = maxX;
-		this.maxY = maxY;
-	}
+	private int y;
 
-	static class Builder {
-
-		Position build() {
-			if (this.currentX < 0 || this.currentX > maxX) {
-				throw new IllegalArgumentException("X out of range [0 to " + maxX + "]: " + currentX);
-			}
-			if (this.currentY < 0 || this.currentY > maxY) {
-				throw new IllegalArgumentException("X out of range [0 to " + maxY + "]: " + currentY);
-			}
-			return new Position(currentX, currentY, maxX, maxY);
-		}
-	}
-
-	public static Position of(int currentX, int currentY, int maxX, int maxY) {
-		return Position.builder().currentX(currentX).currentY(currentY).maxX(maxX).maxY(maxY).build();
-	}
-
-	public static Position of(int x, int y) {
-		return Position.builder().currentX(x).currentY(y).maxX(x).maxY(y).build();
-	}
-
-	public void apply(Movement movement) {
-		this.currentX += movement.getX();
-		this.currentY += movement.getY();
-
-		this.currentX = this.keepMinMax(this.currentX, this.maxX);
-		this.currentY = this.keepMinMax(this.currentY, this.maxY);
-	}
-
-	private int keepMinMax(int current, int max) {
-		if (current < 0) {
-			return 0;
-		}
-		if (current > max) {
-			return max;
-		}
-		return current;
-	}
 }

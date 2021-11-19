@@ -8,20 +8,20 @@ import com.alvarolongueira.mowermanager.control.Action;
 
 public class MowerTest {
 
-	private Position position;
+	private PositionWithLimits position;
 	private Cardinal cardinal;
 	private Mower mower;
 
 	@Before
 	public void inicializar() {
-		this.position = Position.of(5, 5, 10, 10);
+		this.position = PositionWithLimits.of(5, 5, 10, 10);
 		this.cardinal = Cardinal.N;
 		this.mower = new Mower(this.position, this.cardinal);
 	}
 
 	@Test
 	public void createMower() {
-		Position position = Position.of(5, 8, 9, 10);
+		PositionWithLimits position = PositionWithLimits.of(5, 8, 9, 10);
 		Cardinal cardinal = Cardinal.S;
 		Mower mower = new Mower(position, cardinal);
 
@@ -34,7 +34,7 @@ public class MowerTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void createInvalidMower() {
-		Position position = Position.of(-5, 8, 9, 10);
+		PositionWithLimits position = PositionWithLimits.of(-5, 8, 9, 10);
 		Cardinal cardinal = Cardinal.S;
 		new Mower(position, cardinal);
 	}

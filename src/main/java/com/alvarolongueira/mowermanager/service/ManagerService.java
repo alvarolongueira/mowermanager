@@ -47,8 +47,8 @@ public class ManagerService {
 	}
 
 	public void saveMaxParameters(Position maxDimensions) {
-		this.maxX = maxDimensions.getCurrentX();
-		this.maxX = maxDimensions.getCurrentY();
+		this.maxX = maxDimensions.getX();
+		this.maxX = maxDimensions.getY();
 	}
 
 	private Mower mowerAction(Position position, Cardinal cardinal, List<Action> actions) {

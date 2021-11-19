@@ -40,14 +40,25 @@ public class InputServiceFileReader implements InputService {
 
 		int x = Integer.valueOf(line.get(0));
 		int y = Integer.valueOf(line.get(1));
-		Position maxDimensions = Position.of(x, y, x, y);
+		Position maxDimensions = new Position(x, y);
 
 		return Optional.of(maxDimensions);
 	}
 
 	@Override
 	public Optional<Instruction> readNextInstruction() {
-
+		Optional<String> nextLine = Optional.ofNullable(queue.poll());
+		if (nextLine.isPresent() && !nextLine.get().isEmpty()) {
+			return Optional.empty();
+		}
+		
+		
+		
+		nextLine = Optional.ofNullable(queue.poll());
+		if (nextLine.isPresent() && !nextLine.get().isEmpty()) {
+			return Optional.empty();
+		}
+		
 		return Optional.empty();
 	}
 
@@ -60,6 +71,7 @@ public class InputServiceFileReader implements InputService {
 
 		} catch (URISyntaxException | IOException e) {
 			LOG.error("Error leyendo archivo: " + fileName);
+			e.printStackTrace();
 		}
 	}
 

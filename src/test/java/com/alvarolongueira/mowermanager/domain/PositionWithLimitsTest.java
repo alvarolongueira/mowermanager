@@ -5,11 +5,11 @@ import org.junit.Test;
 
 import com.alvarolongueira.mowermanager.control.Movement;
 
-public class PositionTest {
+public class PositionWithLimitsTest {
 
 	@Test
-	public void createPosition() {
-		Position position = Position.of(5, 3, 10, 10);
+	public void createPositionWithLimits() {
+		PositionWithLimits position = PositionWithLimits.of(5, 3, 10, 10);
 		Assert.assertEquals(5, position.getCurrentX());
 		Assert.assertEquals(3, position.getCurrentY());
 		Assert.assertEquals(10, position.getMaxX());
@@ -17,8 +17,8 @@ public class PositionTest {
 	}
 
 	@Test
-	public void createPositionInZeroPosition() {
-		Position position = Position.of(0, 0, 10, 10);
+	public void createPositionWithLimitsInZeroPositionWithLimits() {
+		PositionWithLimits position = PositionWithLimits.of(0, 0, 10, 10);
 		Assert.assertEquals(0, position.getCurrentX());
 		Assert.assertEquals(0, position.getCurrentY());
 		Assert.assertEquals(10, position.getMaxX());
@@ -26,8 +26,8 @@ public class PositionTest {
 	}
 
 	@Test
-	public void createPositionInLimits() {
-		Position position = Position.of(10, 10, 10, 10);
+	public void createPositionWithLimitsInLimits() {
+		PositionWithLimits position = PositionWithLimits.of(10, 10, 10, 10);
 		Assert.assertEquals(10, position.getCurrentX());
 		Assert.assertEquals(10, position.getCurrentY());
 		Assert.assertEquals(10, position.getMaxX());
@@ -35,28 +35,28 @@ public class PositionTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void createInvalidPositionOverXLimit() {
-		Position.of(11, 5, 10, 10);
+	public void createInvalidPositionWithLimitsOverXLimit() {
+		PositionWithLimits.of(11, 5, 10, 10);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void createInvalidPositionOverYLimit() {
-		Position.of(5, 11, 10, 10);
+	public void createInvalidPositionWithLimitsOverYLimit() {
+		PositionWithLimits.of(5, 11, 10, 10);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void createInvalidPositionUnderZeroX() {
-		Position.of(-1, 5, 10, 10);
+	public void createInvalidPositionWithLimitsUnderZeroX() {
+		PositionWithLimits.of(-1, 5, 10, 10);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void createInvalidPositioUnderZeroY() {
-		Position.of(5, -1, 10, 10);
+		PositionWithLimits.of(5, -1, 10, 10);
 	}
 
 	@Test
-	public void movePositionOneNorth() {
-		Position position = Position.of(5, 3, 10, 10);
+	public void movePositionWithLimitsOneNorth() {
+		PositionWithLimits position = PositionWithLimits.of(5, 3, 10, 10);
 		Movement movement = Cardinal.N.getMovement();
 		position.apply(movement);
 		Assert.assertEquals(5, position.getCurrentX());
@@ -64,8 +64,8 @@ public class PositionTest {
 	}
 
 	@Test
-	public void movePositionOneSouth() {
-		Position position = Position.of(5, 3, 10, 10);
+	public void movePositionWithLimitsOneSouth() {
+		PositionWithLimits position = PositionWithLimits.of(5, 3, 10, 10);
 		Movement movement = Cardinal.S.getMovement();
 		position.apply(movement);
 		Assert.assertEquals(5, position.getCurrentX());
@@ -73,8 +73,8 @@ public class PositionTest {
 	}
 
 	@Test
-	public void movePositionOneEast() {
-		Position position = Position.of(5, 3, 10, 10);
+	public void movePositionWithLimitsOneEast() {
+		PositionWithLimits position = PositionWithLimits.of(5, 3, 10, 10);
 		Movement movement = Cardinal.E.getMovement();
 		position.apply(movement);
 		Assert.assertEquals(6, position.getCurrentX());
@@ -82,8 +82,8 @@ public class PositionTest {
 	}
 
 	@Test
-	public void movePositionOneWest() {
-		Position position = Position.of(5, 3, 10, 10);
+	public void movePositionWithLimitsOneWest() {
+		PositionWithLimits position = PositionWithLimits.of(5, 3, 10, 10);
 		Movement movement = Cardinal.W.getMovement();
 		position.apply(movement);
 		Assert.assertEquals(4, position.getCurrentX());
@@ -92,7 +92,7 @@ public class PositionTest {
 
 	@Test
 	public void moveSeveralWays() {
-		Position position = Position.of(9, 9, 10, 10);
+		PositionWithLimits position = PositionWithLimits.of(9, 9, 10, 10);
 		Movement movementNorth = Cardinal.N.getMovement();
 		Movement movementEast = Cardinal.E.getMovement();
 		Movement movementSouth = Cardinal.S.getMovement();
@@ -114,7 +114,7 @@ public class PositionTest {
 
 	@Test
 	public void moveOverLimitsStayInside() {
-		Position position = Position.of(9, 9, 10, 10);
+		PositionWithLimits position = PositionWithLimits.of(9, 9, 10, 10);
 		Movement movementNorth = Cardinal.N.getMovement();
 		Movement movementEast = Cardinal.E.getMovement();
 		position.apply(movementNorth);
@@ -141,7 +141,7 @@ public class PositionTest {
 
 	@Test
 	public void moveUnderLimitsStayInside() {
-		Position position = Position.of(1, 1, 10, 10);
+		PositionWithLimits position = PositionWithLimits.of(1, 1, 10, 10);
 		Movement movementSouth = Cardinal.S.getMovement();
 		Movement movementWest = Cardinal.W.getMovement();
 		position.apply(movementSouth);

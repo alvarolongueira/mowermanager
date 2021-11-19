@@ -16,7 +16,7 @@ public class Mower {
 
 	private static final Logger LOG = Logger.getLogger(Mower.class);
 
-	private Position position;
+	private PositionWithLimits position;
 	private Cardinal cardinal;
 
 	public void move(Action action) {
