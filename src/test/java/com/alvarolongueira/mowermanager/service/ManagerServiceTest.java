@@ -1,4 +1,4 @@
-package com.alvarolongueira.mowermanager;
+package com.alvarolongueira.mowermanager.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +14,7 @@ import com.alvarolongueira.mowermanager.domain.PositionWithLimits;
 import com.alvarolongueira.mowermanager.service.ManagerService;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MowerManagerApplicationTest {
+public class ManagerServiceTest {
 
 	@Mock
 	OutputService ouputService;
@@ -22,7 +22,6 @@ public class MowerManagerApplicationTest {
 	@Test
 	public void completeTest() {
 		CommFactory commFactory = Mockito.spy(new CommFactory());
-
 		Mockito.when(commFactory.getOutputService()).thenReturn(ouputService);
 
 		ManagerService service = new ManagerService(commFactory);
