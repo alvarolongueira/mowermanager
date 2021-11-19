@@ -11,7 +11,6 @@ import com.alvarolongueira.mowermanager.comm.output.OutputService;
 import com.alvarolongueira.mowermanager.domain.Cardinal;
 import com.alvarolongueira.mowermanager.domain.Mower;
 import com.alvarolongueira.mowermanager.domain.PositionWithLimits;
-import com.alvarolongueira.mowermanager.service.ManagerService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ManagerServiceTest {
@@ -36,6 +35,7 @@ public class ManagerServiceTest {
 		Cardinal cardinal2 = Cardinal.E;
 		Mower expectedMower2 = new Mower(position2, cardinal2);
 		Mockito.verify(ouputService).write(expectedMower2);
+		
 	}
 
 }
