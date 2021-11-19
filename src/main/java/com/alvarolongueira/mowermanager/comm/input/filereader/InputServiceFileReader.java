@@ -65,7 +65,7 @@ public class InputServiceFileReader implements InputService {
 
 		Position position = new Position(x, y);
 		Cardinal cardinal = Cardinal.valueOf(line1.get(2));
-		List<Action> actions = line2.stream().map(value -> Action.valueOf(value)).collect(Collectors.toList());
+		List<Action> actions = line2.stream().map(value -> Action.get(value)).collect(Collectors.toList());
 
 		Instruction instruction = new Instruction(cardinal, position, actions);
 
