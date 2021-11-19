@@ -25,8 +25,6 @@ public class ManagerService {
 	}
 
 	public void run() {
-
-		outputService.write(null);
 		
 		Instruction firstInstruction = inputService.readFirstInstruction();
 		this.saveMaxParameters(firstInstruction);
@@ -38,6 +36,7 @@ public class ManagerService {
 			outputService.write(mower);
 
 		} while (instruction != null);
+		
 	}
 
 	public void saveMaxParameters(Instruction instruction) {
