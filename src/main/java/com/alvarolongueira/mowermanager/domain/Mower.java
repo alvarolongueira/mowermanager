@@ -1,6 +1,7 @@
 package com.alvarolongueira.mowermanager.domain;
 
 import java.rmi.UnexpectedException;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -18,6 +19,10 @@ public class Mower {
 
 	private PositionWithLimits position;
 	private Cardinal cardinal;
+
+	public void move(List<Action> actions) {
+		actions.forEach(action -> this.move(action));
+	}
 
 	public void move(Action action) {
 

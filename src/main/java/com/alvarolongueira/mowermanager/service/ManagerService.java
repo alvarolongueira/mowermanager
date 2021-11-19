@@ -11,6 +11,7 @@ import com.alvarolongueira.mowermanager.control.Action;
 import com.alvarolongueira.mowermanager.domain.Cardinal;
 import com.alvarolongueira.mowermanager.domain.Mower;
 import com.alvarolongueira.mowermanager.domain.Position;
+import com.alvarolongueira.mowermanager.domain.PositionWithLimits;
 
 public class ManagerService {
 
@@ -43,25 +44,18 @@ public class ManagerService {
 
 			optionalInstruction = inputService.readNextInstruction();
 		}
-
 	}
 
 	public void saveMaxParameters(Position maxDimensions) {
 		this.maxX = maxDimensions.getX();
-		this.maxX = maxDimensions.getY();
+		this.maxY = maxDimensions.getY();
 	}
 
 	private Mower mowerAction(Position position, Cardinal cardinal, List<Action> actions) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public int getMaxX() {
-		return maxX;
-	}
-
-	public int getMaxY() {
-		return maxY;
+		PositionWithLimits positionWithLimits = PositionWithLimits.of(position.getX(), position.getY(), this.maxX, this.maxY);
+		Mower mower = new Mower(positionWithLimits, cardinal);
+		mower.move(actions);
+		return mower;
 	}
 
 }
