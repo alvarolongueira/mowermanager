@@ -7,7 +7,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class Movement {
 
-	private final int x;
-	private final int y;
+    private final int x;
+
+    private final int y;
 
 }
